@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spin Wheel</title>
+
+<style>
+body{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family:sans-serif;
+}
+
+#wheel{
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    border:8px solid #333;
+    background:conic-gradient(
+        #ff6b6b 0deg 90deg,
+        #ffd93d 90deg 180deg,
+        #6bcB77 180deg 270deg,
+        #4d96ff 270deg 360deg
+    );
+    transition:transform 4s ease-out;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 24px;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<div id="wheel"></div>
+<button onclick="spin()">SPIN</button>
+
+<script>
+let rotation = 0;
+
+function spin(){
+    const extra = Math.floor(Math.random() * 360);
+    rotation += 1440 + extra;
+    document.getElementById("wheel").style.transform =
+        `rotate(${rotation}deg)`;
+}
+</script>
+
+</body>
+</html>
